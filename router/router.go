@@ -4,16 +4,12 @@ import "github.com/gin-gonic/gin"
 
 func Initialize() {
 
-	printMeFunc()
+	// Initialize Server in application
+	server := gin.Default()
 
-	router := gin.Default()
-	router.GET("/test", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"hello": "world",
-		})
-	})
+	// Initialize Routes
+	initializerRoutes(server)
 
-	// router.GET("/me", )
-
-	router.Run(":8089") //listening port 8089
+	//run Server HTTP
+	server.Run(":8089") //listening port 8089
 }
